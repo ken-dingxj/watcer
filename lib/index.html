@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/djcx_utils/dist/utils.min.js"></script>
+  </head>
+  <body></body>
+</html>
+<script type="module">
+  import { defineReactive, Watcer } from "./index.js";
+  window.data = {
+    num: 123,
+  };
+  defineReactive(window.data, "num", 123);
+
+  new Watcer("window.data.num", function (newVal, oldVal) {
+    console.log("新值:" + newVal + "旧值:" + oldVal);
+  });
+  window.data.num = "789";
+  window.data.num = "908";
+</script>
